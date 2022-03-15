@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './login.css';
+
+import firebase from '../../config/firebase';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 
 function Login() {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [msgType, setMsgType] = useState('');
+
+
+  function logar() {
+
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      setMsgType(`Sucesso`);
+    }).catch((error) => {
+      setMsgType(`Erro`);
+    });
+
+  };
 
   return (
-
 
 
     <div className='login-content d-flex align-itens-center' /* d-flex é usado para dar um comportamento de caixas para a div */ >
@@ -18,17 +35,21 @@ function Login() {
         </div>
 
 
-        <input type="email" id='inputEmail' class='form-control my-2' /* my-2 está dando um margin y (top e bottom) de 2 */ placeholder='Email' />
-        <input type="password" id='inputPassword' class='form-control my-2' /* my-2 está dando um margin y (top e bottom) de 2 */ placeholder='Senha' />
+        <input onChange={(e) => setEmail(e.target.value)} type="email" id='inputEmail' class='form-control my-2' /* my-2 está dando um margin y (top e bottom) de 2 -- (e) = evento */ placeholder='Email' />
+        <input onChange={(e) => setPassword(e.target.value)} type="password" id='inputPassword' class='form-control my-2' /* my-2 está dando um margin y (top e bottom) de 2 */ placeholder='Senha' />
 
 
-        <button className='btn btn-lg btn-block btn-login' type='button'> Logar </button>
+        <button onClick={logar} className='btn btn-lg btn-block btn-login' type='button'> Logar </button>
 
-        <div className='msg-login text-white text-center my-3'>
-          <span><strong>Wow!! </strong>Você está conectado &#128540;</span>
-          <br />
-          <span><strong>Oops!! </strong>Verifique se o usuario e senha estão corretos &#129300;</span>
+
+
+        <div className='msg-login text-white text-center my-5'>
+
+          {msgType === 'Sucesso' && <span><strong>WOW!!</strong> Você está conectado!! &#128526; </span>}
+          {msgType === 'Erro' && <span><strong>OOPS...</strong> Verifique se o email e sennha estão corretos &#128546;</span>}
+
         </div>
+
 
         <div className='login-options mt-5 text-center' /* mt-5 está definindo um margin top de 5 */  >
           <a href="www.google.com" className='mx-2 my-2' /* mx-2 está dando uma margin X (left e Right) de 2*/  > Recuperar senha </a>
