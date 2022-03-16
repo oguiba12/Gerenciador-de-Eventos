@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.css';
 
-import firebase from '../../config/firebase';
+import { } from '../../config/firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 
