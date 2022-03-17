@@ -1,0 +1,23 @@
+:root {
+  --primary-color: rgba(2,0,36,1);
+  --body-color: rgb(5, 4, 82);
+}
+
+.container-home {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--body-color);
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  width: 100%;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: rgb(0, 110, 255);
+}
