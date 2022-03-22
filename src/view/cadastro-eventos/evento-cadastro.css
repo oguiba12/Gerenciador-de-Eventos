@@ -1,0 +1,27 @@
+.container-event {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0);
+}
+
+.btn-cadastro {
+  width: 100%;
+  background-color: rgba(2,0,36,1);
+  border-radius: 0rem;
+  color: #FFF;
+  transition: .3s ease-in;
+}
+
+  .btn-cadastro:hover {
+    background-color: var(--color2);
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.form-group {
+  background-color: rgba(0, 0, 255, 0);
+  width: 95vw;
+}
